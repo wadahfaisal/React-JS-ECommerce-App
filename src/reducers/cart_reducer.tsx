@@ -66,9 +66,8 @@ const cart_reducer = (state: State, action: Action) => {
           }
           return { ...item, amount: newAmount };
         }
-      } else {
-        return item;
       }
+      return item;
     });
 
     return { ...state, cart: tempCart } as State;

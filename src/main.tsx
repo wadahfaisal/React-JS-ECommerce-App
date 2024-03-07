@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./scss/main.scss";
-
 import { ProductsProvider } from "./context/products_context";
 import { FilterProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
@@ -19,17 +18,22 @@ import { Auth0Provider } from "@auth0/auth0-react";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-mpka0mcxs6mkqscu.us.auth0.com"
-      clientId="SAsNqOo662F4jnbfQNJDsH97zuE1USqA"
-      redirectUri={window.location.origin}
+      domain={process.env.REACT_APP_AUTH_DOMAIN as string}
+      clientId={process.env.REACT_APP_AUTH_CLIENT_ID as string}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+      cacheLocation="localstorage"
     >
-      <ProductsProvider>
-        <FilterProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </FilterProvider>
-      </ProductsProvider>
+      <UserProvider>
+        <ProductsProvider>
+          <FilterProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FilterProvider>
+        </ProductsProvider>
+      </UserProvider>
     </Auth0Provider>
   </React.StrictMode>
 );

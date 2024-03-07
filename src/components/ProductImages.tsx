@@ -6,7 +6,7 @@ const ProductImages = ({ images = [] }: Props) => {
   console.log(images);
   return (
     <section className="product-images">
-      <img src={mainImage} alt="main image" className="main" />
+      <img src={mainImage} alt="main" className="main" />
       <div className="gallery">
         {images.map((img, index) => {
           return (
