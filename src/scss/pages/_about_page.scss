@@ -1,5 +1,8 @@
 main.about-page {
-  section {
+  .about-section {
+    @extend .page;
+    @extend .section;
+    @extend .section-center;
     display: grid;
     gap: 4rem;
     img {

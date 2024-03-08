@@ -118,7 +118,8 @@ p {
 .btn {
   text-transform: uppercase;
   background: $clr-primary-5;
-  color: $clr-primary-10;
+  // color: $clr-primary-10;
+  color: #fff;
   padding: 0.375rem 0.75rem;
   letter-spacing: $spacing;
   display: inline-block;
