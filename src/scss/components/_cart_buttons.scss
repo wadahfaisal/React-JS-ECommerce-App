@@ -6,13 +6,17 @@ div.cart-btn-wrapper {
 
   .cart-btn {
     // color: $clr-grey-1;
-    color: $clr-white;
+
     font-size: 1.5rem;
     letter-spacing: $spacing;
     // color: $clr-grey-1;
     display: flex;
+    color: $clr-primary-5;
 
     align-items: center;
+    @media (min-width: 992px) {
+      color: $clr-white;
+    }
   }
   .cart-container {
     display: flex;
@@ -28,7 +32,7 @@ div.cart-btn-wrapper {
     top: -10px;
     right: -16px;
     // background: $clr-primary-5;
-    background: $clr-grey-7;
+
     width: 16px;
     height: 16px;
     display: flex;
@@ -37,9 +41,15 @@ div.cart-btn-wrapper {
     border-radius: 50%;
     font-size: 0.75rem;
     // color: $clr-white;
-    color: $clr-primary-5;
+
     font-weight: 600;
     padding: 12px;
+    color: $clr-white;
+    background: $clr-grey-7;
+    @media (min-width: 992px) {
+      // background: $clr-grey-1;
+      color: $clr-primary-5;
+    }
   }
   .auth-btn {
     display: flex;
@@ -49,10 +59,13 @@ div.cart-btn-wrapper {
     font-size: 1.5rem;
     cursor: pointer;
     // color: $clr-grey-1;
-    color: $clr-white;
     letter-spacing: $spacing;
+    color: $clr-primary-5;
     svg {
       margin-left: 5px;
+    }
+    @media (min-width: 992px) {
+      color: $clr-white;
     }
   }
 }
