@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "ntl": "netlify dev"
+    "ntl": "netlify dev",
+    "server": "cd \"E:/PCTMoveData/Downloads/UTorrent Downloads/NodeJS - John Smilga/NodeJS - John Smilga/Source Code/10-e-commerce-api/final\" && npm run dev"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",
