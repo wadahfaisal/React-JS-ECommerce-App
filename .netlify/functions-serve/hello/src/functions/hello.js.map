@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["functions/hello.js"],
+  "sourceRoot": "C:/Users/WADAH/AppData/Local/Temp/tmp-12644-Ph8LipgYkTwf",
+  "sourcesContent": ["exports.handler = async function (event, context) {\r\n  return {\r\n    statusCode: 200,\r\n    body: \"hello world\",\r\n  };\r\n};\r\n"],
+  "mappings": ";AAAA,QAAQ,UAAU,eAAgB,OAAO,SAAS;AAChD,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM;AAAA,EACR;AACF;",
+  "names": []
+}

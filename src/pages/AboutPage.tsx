@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <main className="about-page">
       <PageHero title="about" />
-      <section className="page section section-center">
+      <section className="about-section">
         <img src={aboutImg} alt="nice desk" />
         <article>
           <div className="title">
