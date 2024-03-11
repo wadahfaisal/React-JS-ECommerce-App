@@ -1,4 +1,3 @@
-import React from "react";
 // import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import { FaBars } from "react-icons/fa";
@@ -16,7 +15,9 @@ const Nav = () => {
       <div className="nav-center">
         <div className="nav-header">
           <Link to="/">
-            <img src={logo} alt="comfy sloth" />
+            {/* <img src={logo} alt="comfy sloth" /> */}
+            <h1 style={{ marginBottom: "0", fontWeight: "700" }}>fashe</h1>
+
             {/* <h1>ECommerce App</h1> */}
           </Link>
           <button type="button" className="nav-toggle" onClick={openSidebar}>
