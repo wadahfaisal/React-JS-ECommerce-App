@@ -1,18 +1,6 @@
 import { GiCompass, GiDiamondHard, GiStabbedNote } from "react-icons/gi";
 
-interface Link {
-  id: number;
-  text: string;
-  url: string;
-}
-
-interface Service {
-  id: number;
-  icon: JSX.Element;
-  title: string;
-  text: string;
-}
-export const links: Link[] = [
+export const links = [
   {
     id: 1,
     text: "home",
@@ -20,17 +8,17 @@ export const links: Link[] = [
   },
   {
     id: 2,
-    text: "about",
-    url: "/about",
-  },
-  {
-    id: 3,
     text: "products",
     url: "/products",
   },
+  {
+    id: 3,
+    text: "about",
+    url: "/about",
+  },
 ];
 
-export const services: Service[] = [
+export const services = [
   {
     id: 1,
     icon: <GiCompass />,

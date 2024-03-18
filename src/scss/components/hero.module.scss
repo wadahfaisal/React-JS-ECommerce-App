@@ -1,0 +1,70 @@
+@import "../variables";
+@import "../global_styles";
+
+.homeHero {
+  @extend .section-center;
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  .imgContainer {
+    display: none;
+  }
+
+  p {
+    line-height: 2;
+    max-width: 45em;
+    margin-bottom: 2rem;
+    color: $clr-grey-5;
+    font-size: 1rem;
+  }
+  .heroBtn {
+    @extend .btn;
+  }
+  @media (min-width: 992px) {
+    height: calc(100vh - 3rem);
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    text-align: left;
+    h1 {
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+    .heroBtn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+    .imgContainer {
+      display: block;
+      position: relative;
+    }
+    .mainImg {
+      width: 100%;
+      height: 550px;
+      position: relative;
+      border-radius: $radius;
+      display: block;
+      object-fit: cover;
+    }
+    .accentImg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 250px;
+      transform: translateX(-50%);
+      border-radius: $radius;
+    }
+    .imgContainer::before {
+      content: "";
+      position: absolute;
+      width: 10%;
+      height: 80%;
+      background: $clr-primary-9;
+      bottom: 0%;
+      left: -8%;
+      border-radius: $radius;
+    }
+  }
+}

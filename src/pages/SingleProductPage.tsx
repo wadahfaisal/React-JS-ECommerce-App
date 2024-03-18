@@ -36,10 +36,18 @@ const SingleProductPage = () => {
   // }, [error]);
 
   if (loading) {
-    return <Loading />;
+    return (
+      <main className="page-100">
+        <Loading />
+      </main>
+    );
   }
   if (error) {
-    return <Error />;
+    return (
+      <main className="page-100">
+        <Error />
+      </main>
+    );
   }
 
   const {
