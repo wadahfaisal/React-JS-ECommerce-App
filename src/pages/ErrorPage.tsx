@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 const ErrorPage = () => {
   return (
     // <main className="error-page page-100">

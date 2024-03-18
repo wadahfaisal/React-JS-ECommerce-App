@@ -1,7 +1,8 @@
 import { formatPrice } from "../utils/helpers";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import productImage from "../assets/product.jpg";
+// import productImage from "../assets/product.jpg";
+import { ProductProps as Props } from "../types/propsTypes";
 
 const Product = ({ images, name, price, id }: Props) => {
   return (
@@ -20,10 +21,4 @@ const Product = ({ images, name, price, id }: Props) => {
   );
 };
 
-type Props = {
-  images: string[];
-  name: string;
-  price: number;
-  id: string;
-};
 export default Product;

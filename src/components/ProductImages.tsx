@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ProductImagesProps as Props } from "../types/propsTypes";
 
 const ProductImages = ({ images = [] }: Props) => {
   const [mainImage, setMainImage] = useState(images[0]);
@@ -24,7 +25,4 @@ const ProductImages = ({ images = [] }: Props) => {
   );
 };
 
-type Props = {
-  images: string[];
-};
 export default ProductImages;

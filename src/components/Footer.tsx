@@ -1,5 +1,3 @@
-import React from "react";
-// import styled from "styled-components";
 const Footer = () => {
   return (
     <footer className="main-footer">
@@ -11,8 +9,5 @@ const Footer = () => {
     </footer>
   );
 };
-
-// const Wrapper = styled.footer`
-// `
 
 export default Footer;

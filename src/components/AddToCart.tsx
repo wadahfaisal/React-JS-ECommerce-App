@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
 import AmountButtons from "./AmountButtons";
-import { Product } from "../types/contexts/products_context_type";
+import { AddToCartProps as Props } from "../types/propsTypes";
 
 const AddToCart = ({ product }: Props) => {
   const { id, inventory: stock, colors } = product;
@@ -68,10 +68,6 @@ const AddToCart = ({ product }: Props) => {
       </div>
     </section>
   );
-};
-
-type Props = {
-  product: Product;
 };
 
 export default AddToCart;

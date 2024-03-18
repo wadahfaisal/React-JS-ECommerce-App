@@ -1,9 +1,8 @@
-// import styled from "styled-components";
 import { formatPrice } from "../utils/helpers";
 import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
-
+import { CartItemProps as Props } from "../types/propsTypes";
 import styles from "../scss/components/cartItem.module.scss";
 
 const CartItem = ({ id, image, name, color, price, amount }: Props) => {
@@ -41,15 +40,6 @@ const CartItem = ({ id, image, name, color, price, amount }: Props) => {
       </button>
     </article>
   );
-};
-
-type Props = {
-  amount: number;
-  color: string;
-  id: string;
-  name: string;
-  price: number;
-  image: string;
 };
 
 export default CartItem;

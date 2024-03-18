@@ -1,7 +1,5 @@
-import React from "react";
-// import styled from "styled-components";
 import Product from "./Product";
-import { Product as ProductType } from "../types/contexts/products_context_type";
+import { GridViewProps as Props } from "../types/propsTypes";
 
 const GridView = ({ products }: Props) => {
   return (
@@ -13,10 +11,6 @@ const GridView = ({ products }: Props) => {
       </div>
     </section>
   );
-};
-
-type Props = {
-  products: ProductType[];
 };
 
 export default GridView;

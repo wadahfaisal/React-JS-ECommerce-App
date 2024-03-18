@@ -1,16 +1,15 @@
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
-const Stars = ({ stars, reviews }: Props) => {
-  const str = Math.random(1) * 5;
-  const rvw = Math.floor(Math.random(1) * 40);
+import { StarsProps as Props } from "../types/propsTypes";
 
+const Stars = ({ stars, reviews }: Props) => {
   const tempStars = Array.from({ length: 5 }, (_, index) => {
     const number = index + 0.5;
 
     return (
       <span key={index}>
-        {str >= index + 1 ? (
+        {stars >= index + 1 ? (
           <BsStarFill />
-        ) : str >= number ? (
+        ) : stars >= number ? (
           <BsStarHalf />
         ) : (
           <BsStar />
@@ -22,14 +21,9 @@ const Stars = ({ stars, reviews }: Props) => {
   return (
     <div className="stars-component">
       <div className="stars">{tempStars}</div>
-      <p className="reviews">({rvw} customer reviews)</p>
+      <p className="reviews">({reviews} customer reviews)</p>
     </div>
   );
-};
-
-type Props = {
-  stars: number;
-  reviews: number;
 };
 
 export default Stars;

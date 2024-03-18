@@ -1,6 +1,6 @@
-import { ChangeEventHandler } from "react";
 import { useFilterContext } from "../context/filter_context";
 import { BsFillGridFill, BsList } from "react-icons/bs";
+
 const Sort = () => {
   const {
     filtered_products: products,

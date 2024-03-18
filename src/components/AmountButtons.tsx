@@ -1,4 +1,5 @@
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { AmountButtonsProps as Props } from "../types/propsTypes";
 
 const AmountButtons = ({ amount, increase, decrease }: Props) => {
   return (
@@ -12,12 +13,6 @@ const AmountButtons = ({ amount, increase, decrease }: Props) => {
       </button>
     </div>
   );
-};
-
-type Props = {
-  increase: () => void;
-  decrease: () => void;
-  amount: number;
 };
 
 export default AmountButtons;
