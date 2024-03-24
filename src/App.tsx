@@ -16,6 +16,7 @@ import {
   Error,
   AuthWrapper,
   Login,
+  Register,
 } from "./pages";
 
 const App: React.FC = () => {
@@ -39,6 +40,7 @@ const App: React.FC = () => {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
