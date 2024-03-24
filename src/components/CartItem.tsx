@@ -18,7 +18,7 @@ const CartItem = ({ id, image, name, color, price, amount }: Props) => {
   return (
     <article className={styles.cartItem}>
       <div className={styles.title}>
-        <img src={image} alt={name} />
+        <img src={`http://localhost:5000${image}`} alt={name} />
         <div>
           <h5 className={styles.name}>{name}</h5>
           <p className={styles.color}>

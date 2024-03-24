@@ -37,7 +37,7 @@ const App: React.FC = () => {
               </Private>
             }
           />
-          {/* <Route path="/checkout" element={<Checkout />} /> */}
+
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />

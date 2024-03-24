@@ -1,5 +1,4 @@
-// import { useParams, useHistory } from 'react-router-dom'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useProductsContext } from "../context/products_context";
 import { single_product_url as url } from "../utils/constants";
 import { formatPrice } from "../utils/helpers";
@@ -11,7 +10,6 @@ import {
   Stars,
   PageHero,
 } from "../components";
-import { Home } from ".";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -24,16 +22,19 @@ const SingleProductPage = () => {
   } = useProductsContext();
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSingleProduct(`${url}/${id}`);
   }, [id]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     return redirect("/");
-  //   }, 3000);
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [error]);
 
   if (loading) {
     return (
@@ -42,6 +43,7 @@ const SingleProductPage = () => {
       </main>
     );
   }
+
   if (error) {
     return (
       <main className="page-100">
