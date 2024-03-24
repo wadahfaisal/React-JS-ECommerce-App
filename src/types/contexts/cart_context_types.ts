@@ -14,7 +14,7 @@ export type CartItem = {
   max: number;
   name: string;
   price: number;
-  // image: string
+  image: string;
 };
 
 export type cartContextType = {
