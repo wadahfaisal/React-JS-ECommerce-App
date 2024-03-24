@@ -7,6 +7,7 @@ import Cart from "./CartPage";
 import Error from "./ErrorPage";
 import Checkout from "./CheckoutPage";
 import AuthWrapper from "./AuthWrapper";
+import Login from "./LoginPage";
 
 export {
   Home,
@@ -18,4 +19,5 @@ export {
   Error,
   Checkout,
   AuthWrapper,
+  Login,
 };

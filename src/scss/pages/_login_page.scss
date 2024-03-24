@@ -1,0 +1,12 @@
+form.login-form {
+  @extend .form;
+
+  h3 {
+    text-align: center;
+  }
+
+  .submit-btn {
+    @extend .btn;
+    width: 100%;
+  }
+}

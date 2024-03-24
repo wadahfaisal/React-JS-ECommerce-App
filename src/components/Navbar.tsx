@@ -20,6 +20,9 @@ const Nav = () => {
 
             {/* <h1>ECommerce App</h1> */}
           </Link>
+          <Link to="/login" className="btn">
+            Login
+          </Link>
           <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
           </button>

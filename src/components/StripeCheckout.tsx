@@ -50,7 +50,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        return_url: "http://localhost:5173",
       },
     });
 
@@ -76,6 +76,8 @@ const CheckoutForm = () => {
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret"
     );
+
+    console.log(clientSecret);
 
     if (!clientSecret) {
       return;
@@ -104,6 +106,7 @@ const CheckoutForm = () => {
     });
   }, [stripe]);
 
+  console.log(message);
   return (
     <div>
       {succeeded ? (
@@ -147,11 +150,15 @@ const StripeCheckout = () => {
   const createPaymentIntent = async () => {
     const tax = 499;
     try {
-      const { data } = await axios.post("http://localhost:5000/api/v1/orders", {
-        tax,
-        shippingFee: shipping_fee,
-        items: cart,
-      });
+      const { data } = await axios.post(
+        "http://localhost:5000/api/v1/orders",
+        {
+          tax,
+          shippingFee: shipping_fee,
+          items: cart,
+        },
+        { withCredentials: true }
+      );
       setClientSecret(data.clientSecret);
     } catch (error) {
       console.log((error as AxiosError).response);

@@ -15,6 +15,7 @@ import {
   Private,
   Error,
   AuthWrapper,
+  Login,
 } from "./pages";
 
 const App: React.FC = () => {
@@ -37,7 +38,7 @@ const App: React.FC = () => {
               </Private>
             }
           />
-
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Footer />
