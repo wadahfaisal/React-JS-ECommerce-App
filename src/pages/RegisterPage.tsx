@@ -1,7 +1,7 @@
 import { FormRow } from "../components";
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useUserContext } from "../context/user_context";
 
 const RegisterPage = () => {
   const initialState = {
@@ -11,8 +11,13 @@ const RegisterPage = () => {
     confirmPassword: "",
   };
   const [values, setValues] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {
+    user,
+    register_loading: isLoading,
+    register_error: isError,
+    registerUser,
+  } = useUserContext();
+
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,46 +27,29 @@ const RegisterPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+
     const { name, email, password, confirmPassword } = values;
 
     if (!name || !email || !password || !confirmPassword) {
       console.log("please fill out all fields...");
-      setIsLoading(false);
       return;
     }
 
     if (password !== confirmPassword) {
       console.log("password dosen't match");
-      setIsLoading(false);
       return;
     }
 
-    const loginUser = async () => {
-      setIsLoading(true);
-      try {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/v1/auth/register",
-          { name, email, password },
-          { withCredentials: true }
-        );
-        console.log("register successfull", data);
-        setIsLoggedIn(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-
-    loginUser();
+    registerUser({ name, email, password });
   };
 
-  if (isLoggedIn) {
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
-  }
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+    }
+  }, [user]);
 
   return (
     <main className="page-100">
@@ -92,6 +80,9 @@ const RegisterPage = () => {
           handleChange={handleChange}
           value={values.confirmPassword}
         />
+        <p>
+          Already have an account? <Link to="/login">login</Link>
+        </p>
         <button type="submit" className="submit-btn" disabled={isLoading}>
           {isLoading ? "loading..." : "register"}
         </button>

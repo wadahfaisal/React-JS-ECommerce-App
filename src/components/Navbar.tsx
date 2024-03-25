@@ -8,7 +8,7 @@ import logo from "../assets/logo.svg";
 
 const Nav = () => {
   const { openSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
+  const { user } = useUserContext();
 
   return (
     <nav>
@@ -19,9 +19,6 @@ const Nav = () => {
             <h1 style={{ marginBottom: "0", fontWeight: "700" }}>fashe</h1>
 
             {/* <h1>ECommerce App</h1> */}
-          </Link>
-          <Link to="/login" className="btn">
-            Login
           </Link>
           <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
@@ -36,7 +33,7 @@ const Nav = () => {
               </li>
             );
           })}
-          {myUser && (
+          {user && (
             <li>
               <Link to="/checkout">checkout</Link>
             </li>

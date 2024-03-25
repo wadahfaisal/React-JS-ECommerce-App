@@ -1,14 +1,18 @@
 import { FormRow } from "../components";
-import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/user_context";
 
 const LoginPage = () => {
   const initialState = { email: "", password: "" };
   const [values, setValues] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const {
+    user,
+    login_loading: isLoading,
+    login_error: isError,
+    loginUser,
+  } = useUserContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -17,40 +21,24 @@ const LoginPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
     const { email, password } = values;
 
     if (!email || !password) {
       console.log("please fill out all fields...");
-      setIsLoading(false);
       return;
     }
 
-    const loginUser = async () => {
-      setIsLoading(true);
-      try {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/v1/auth/login",
-          { email, password },
-          { withCredentials: true }
-        );
-        console.log("login successfull", data);
-        setIsLoggedIn(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
-
-    loginUser();
+    loginUser({ email, password });
   };
 
-  if (isLoggedIn) {
-    setTimeout(() => {
-      navigate("/");
-    }, 1000);
-  }
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
+    }
+  }, [user]);
+
   return (
     <main className="page-100">
       <form className="auth-form" onSubmit={handleSubmit}>
@@ -67,6 +55,9 @@ const LoginPage = () => {
           handleChange={handleChange}
           value={values.password}
         />
+        <p>
+          Don't have an accoutn? <Link to="/register">register now</Link>
+        </p>
         <button type="submit" className="submit-btn" disabled={isLoading}>
           {isLoading ? "loading..." : "Log in"}
         </button>

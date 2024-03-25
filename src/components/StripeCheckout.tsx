@@ -20,7 +20,8 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY as string);
 
 const CheckoutForm = () => {
   const { total_amount, shipping_fee, clearCart } = useCartContext();
-  const { myUser } = useUserContext();
+  // const { myUser } = useUserContext();
+  const { user } = useUserContext();
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -117,7 +118,7 @@ const CheckoutForm = () => {
         </article>
       ) : (
         <article>
-          <h4>Hello, {myUser && myUser.name}</h4>
+          <h4>Hello, {user && user.name}</h4>
           <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
           <p>Test Card Number : 4242 4242 4242 4242</p>
         </article>
