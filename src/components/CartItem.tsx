@@ -3,7 +3,6 @@ import AmountButtons from "./AmountButtons";
 import { FaTrash } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
 import { CartItemProps as Props } from "../types/propsTypes";
-import styles from "../scss/components/cartItem.module.scss";
 
 const CartItem = ({ id, image, name, color, price, amount }: Props) => {
   const { removeItem, toggleAmount } = useCartContext();
@@ -16,24 +15,24 @@ const CartItem = ({ id, image, name, color, price, amount }: Props) => {
   };
 
   return (
-    <article className={styles.cartItem}>
-      <div className={styles.title}>
+    <article className="cart-item">
+      <div className="title">
         <img src={`http://localhost:5000${image}`} alt={name} />
         <div>
-          <h5 className={styles.name}>{name}</h5>
-          <p className={styles.color}>
+          <h5 className="name">{name}</h5>
+          <p className="color">
             color : <span style={{ background: color }}></span>
           </p>
-          <h5 className={styles.priceSmall}>{formatPrice(price)}</h5>
+          <h5 className="price-small">{formatPrice(price)}</h5>
         </div>
       </div>
-      <h5 className={styles.price}>{formatPrice(price)}</h5>
+      <h5 className="price">{formatPrice(price)}</h5>
       <AmountButtons amount={amount} increase={increase} decrease={decrease} />
-      <h5 className={styles.subtotal}>{formatPrice(price)}</h5>
+      <h5 className="subtotal">{formatPrice(price)}</h5>
 
       <button
         type="button"
-        className={styles.removeBtn}
+        className="remove-btn"
         onClick={() => removeItem(id)}
       >
         <FaTrash />

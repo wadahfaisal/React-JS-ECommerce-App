@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Error from "./Error";
 import Loading from "./Loading";
 import Product from "./Product";
-import styles from "../scss/components/featuredProducts.module.scss";
 
 const FeaturedProducts = () => {
   const {
@@ -21,17 +20,17 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <section className={styles.homeFeatured}>
+    <section className="featured-products">
       <div className="title">
         <h2>featured products</h2>
         <div className="underline"></div>
       </div>
-      <div className={styles.featured}>
+      <div className="featured">
         {featured.slice(0, 3).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
       </div>
-      <Link to="/products" className={styles.btn}>
+      <Link to="/products" className="btn">
         all products
       </Link>
     </section>

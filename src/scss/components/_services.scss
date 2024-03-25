@@ -1,7 +1,4 @@
-@import "../variables";
-@import "../global_styles";
-
-.homeServices {
+section.home-services {
   h3,
   h4 {
     color: $clr-primary-1;
@@ -18,7 +15,7 @@
     line-height: 1.8;
     color: $clr-primary-3;
   }
-  .servicesCenter {
+  .services-center {
     margin-top: 4rem;
     display: grid;
     gap: 2.5rem;
@@ -46,9 +43,6 @@
       font-size: 2rem;
     }
   }
-  .sectionCenter {
-    @extend .section-center;
-  }
   @media (min-width: 992px) {
     .header {
       display: grid;
@@ -56,13 +50,14 @@
     }
   }
   @media (min-width: 576px) {
-    .servicesCenter {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    .services-center {
+      // grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
   }
   @media (min-width: 1280px) {
     padding: 0;
-    .sectionCenter {
+    .section-center {
       transform: translateY(5rem);
     }
   }

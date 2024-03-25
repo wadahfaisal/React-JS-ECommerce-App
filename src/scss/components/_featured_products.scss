@@ -1,10 +1,9 @@
-@import "../variables";
-@import "../global_styles";
-
-.homeFeatured {
+section.featured-products {
   @extend .section;
   background: $clr-grey-10;
+
   .featured {
+    @extend .section-center;
     margin: 4rem auto;
     display: grid;
     gap: 2.5rem;
@@ -13,16 +12,15 @@
     }
   }
   .btn {
-    @extend .btn;
     display: block;
     width: 148px;
     margin: 0 auto;
     text-align: center;
   }
-  .featured {
-    @extend .section-center;
-    @media (min-width: 576px) {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  @media (min-width: 576px) {
+    .featured {
+      // grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

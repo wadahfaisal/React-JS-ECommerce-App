@@ -7,10 +7,10 @@
 @import "./components/footer";
 @import "./components/sidebar";
 @import "./components/page_hero";
-// @import "./components/hero";
-// @import "./components/services";
-// @import "./components/contact";
-// @import "./components/featured_products";
+@import "./components/hero";
+@import "./components/services";
+@import "./components/contact";
+@import "./components/featured_products";
 @import "./components/product";
 @import "./components/product_images";
 @import "./components/stars";
@@ -24,6 +24,7 @@
 @import "./components/cart_columns";
 @import "./components/cart_totals";
 @import "./components/stripe_checkout";
+@import "./components/cart_item";
 
 // Importing Pages
 @import "./pages/error_page";
