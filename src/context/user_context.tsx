@@ -31,8 +31,8 @@ const initialState: State = {
 export const UserContext = createContext({} as UserContextType);
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [user, setUser] = useState(null);
 
   const loginUser = async (userData: LoginData) => {
     dispatch({ type: ActionTypes.LOGIN_USER_BEGIN });
