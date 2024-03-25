@@ -6,8 +6,8 @@ import {
   PropsWithChildren,
   createContext,
   useContext,
-  useEffect,
-  useState,
+  // useEffect,
+  // useState,
   useReducer,
 } from "react";
 import {
@@ -32,7 +32,7 @@ export const UserContext = createContext({} as UserContextType);
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   const loginUser = async (userData: LoginData) => {
     dispatch({ type: ActionTypes.LOGIN_USER_BEGIN });

@@ -14,7 +14,7 @@ const RegisterPage = () => {
   const {
     user,
     register_loading: isLoading,
-    register_error: isError,
+    // register_error: isError,
     registerUser,
   } = useUserContext();
 

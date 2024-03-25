@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { PageHero, StripeCheckout } from "../components";
 // extra imports
 import { useCartContext } from "../context/cart_context";
@@ -10,7 +9,7 @@ const CheckoutPage = () => {
   return (
     <main className="checkout-page">
       <PageHero title="checkout" />
-      <Wrapper className="page">
+      <div className="checkout-content">
         {cart.length < 1 ? (
           <div className="empty">
             <h2>your cart is empty</h2>
@@ -21,18 +20,9 @@ const CheckoutPage = () => {
         ) : (
           <StripeCheckout />
         )}
-      </Wrapper>
+      </div>
     </main>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .empty {
-    text-align: center;
-  }
-`;
 
 export default CheckoutPage;
