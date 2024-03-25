@@ -20,7 +20,9 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY as string);
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
-  const { myUser } = useUserContext();
+  // const { myUser } = useUserContext();
+  // const {user} = useUserContext();
+
   // const history = useHistory();
   const navigate = useNavigate();
 

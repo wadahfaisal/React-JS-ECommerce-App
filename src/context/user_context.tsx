@@ -1,31 +1,94 @@
+import { getUserFromLS } from "../utils/localStorage";
+import reducer from "../reducers/user_reducer";
+import customFetch from "../utils/axios";
+import { AxiosError } from "axios";
 import {
+  PropsWithChildren,
   createContext,
   useContext,
   useEffect,
   useState,
-  PropsWithChildren,
+  useReducer,
 } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import {
+  State,
+  ActionTypes,
+  LoginData,
+  RegisterData,
+  UserContextType,
+} from "../types/contexts/user_context_types";
 
-const UserContext = createContext({});
+const initialState: State = {
+  user: getUserFromLS(),
+  register_loading: false,
+  register_error: null,
+  login_loading: false,
+  login_error: null,
+  logout_loading: false,
+  logout_error: null,
+};
+
+export const UserContext = createContext({} as UserContextType);
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
-  // const [myUser, setMyUser] = useState(null)
-  const [myUser, setMyUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    setMyUser(user);
-  }, [user]);
+  const loginUser = async (userData: LoginData) => {
+    dispatch({ type: ActionTypes.LOGIN_USER_BEGIN });
+    try {
+      const { data } = await customFetch.post("/auth/login", userData);
+      dispatch({ type: ActionTypes.LOGIN_USER_SUCCESS, payload: data.user });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: ActionTypes.LOGIN_USER_ERROR,
+        payload: error as AxiosError,
+      });
+    }
+  };
+  const registerUser = async (userData: RegisterData) => {
+    dispatch({ type: ActionTypes.REGISTER_USER_BEGIN });
+    try {
+      const { data } = await customFetch.post("/auth/register", userData);
+      dispatch({ type: ActionTypes.REGISTER_USER_SUCCESS, payload: data.user });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: ActionTypes.REGISTER_USER_ERROR,
+        payload: error as AxiosError,
+      });
+    }
+  };
+  const logoutUser = async () => {
+    dispatch({ type: ActionTypes.LOGOUT_USER_BEGIN });
+    try {
+      const { data } = await customFetch.get("/auth/logout");
+      dispatch({ type: ActionTypes.LOGOUT_USER_SUCCESS, payload: data.msg });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: ActionTypes.LOGIN_USER_ERROR,
+        payload: error as AxiosError,
+      });
+    }
+  };
+
+  // useEffect(() => {
+  //   if (user) {
+  //     setUser(user);
+  //   }
+  // }, [user]);
 
   return (
-    <UserContext.Provider value={{ loginWithRedirect, logout, myUser }}>
+    <UserContext.Provider
+      value={{ ...state, loginUser, registerUser, logoutUser }}
+    >
       {children}
     </UserContext.Provider>
   );
 };
-// make sure use
+
 export const useUserContext = () => {
   return useContext(UserContext);
 };

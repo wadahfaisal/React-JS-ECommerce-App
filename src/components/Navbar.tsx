@@ -8,7 +8,7 @@ import logo from "../assets/logo.svg";
 
 const Nav = () => {
   const { openSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
+  const { user } = useUserContext();
 
   return (
     <nav>
@@ -33,7 +33,7 @@ const Nav = () => {
               </li>
             );
           })}
-          {myUser && (
+          {user && (
             <li>
               <Link to="/checkout">checkout</Link>
             </li>

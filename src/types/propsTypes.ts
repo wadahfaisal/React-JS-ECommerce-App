@@ -47,3 +47,11 @@ export type ProductProps = {
 export type ProductImagesProps = {
   images: string[];
 };
+
+export type FormRowProps = {
+  type: string;
+  name: string;
+  value: string;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  labelText?: string;
+};

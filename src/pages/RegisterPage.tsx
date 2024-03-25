@@ -1,18 +1,24 @@
 import { FormRow } from "../components";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserContext } from "../context/user_context";
 
-const LoginPage = () => {
-  const initialState = { email: "", password: "" };
+const RegisterPage = () => {
+  const initialState = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
   const [values, setValues] = useState(initialState);
-  const navigate = useNavigate();
   const {
     user,
-    login_loading: isLoading,
-    login_error: isError,
-    loginUser,
+    register_loading: isLoading,
+    register_error: isError,
+    registerUser,
   } = useUserContext();
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,14 +27,20 @@ const LoginPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const { email, password } = values;
 
-    if (!email || !password) {
+    const { name, email, password, confirmPassword } = values;
+
+    if (!name || !email || !password || !confirmPassword) {
       console.log("please fill out all fields...");
       return;
     }
 
-    loginUser({ email, password });
+    if (password !== confirmPassword) {
+      console.log("password dosen't match");
+      return;
+    }
+
+    registerUser({ name, email, password });
   };
 
   useEffect(() => {
@@ -42,7 +54,13 @@ const LoginPage = () => {
   return (
     <main className="page-100">
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h4>login</h4>
+        <h4 style={{ textAlign: "center" }}>register</h4>
+        <FormRow
+          name="name"
+          type="text"
+          handleChange={handleChange}
+          value={values.name}
+        />
         <FormRow
           name="email"
           type="email"
@@ -55,15 +73,22 @@ const LoginPage = () => {
           handleChange={handleChange}
           value={values.password}
         />
+        <FormRow
+          labelText="confirm password"
+          name="confirmPassword"
+          type="password"
+          handleChange={handleChange}
+          value={values.confirmPassword}
+        />
         <p>
-          Don't have an accoutn? <Link to="/register">register now</Link>
+          Already have an account? <Link to="/login">login</Link>
         </p>
         <button type="submit" className="submit-btn" disabled={isLoading}>
-          {isLoading ? "loading..." : "Log in"}
+          {isLoading ? "loading..." : "register"}
         </button>
       </form>
     </main>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

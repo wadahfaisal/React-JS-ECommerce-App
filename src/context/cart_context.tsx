@@ -30,8 +30,6 @@ const initialState: State = {
   shipping_fee: 750,
 };
 
-console.log(initialState.cart);
-
 const CartContext = createContext({} as cartContextType);
 
 export const CartProvider = ({ children }: PropsWithChildren) => {

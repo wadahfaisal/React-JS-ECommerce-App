@@ -20,7 +20,8 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY as string);
 
 const CheckoutForm = () => {
   const { total_amount, shipping_fee, clearCart } = useCartContext();
-  const { myUser } = useUserContext();
+  // const { myUser } = useUserContext();
+  const { user } = useUserContext();
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +51,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000",
+        return_url: "http://localhost:5173",
       },
     });
 
@@ -76,6 +77,8 @@ const CheckoutForm = () => {
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret"
     );
+
+    console.log(clientSecret);
 
     if (!clientSecret) {
       return;
@@ -104,6 +107,7 @@ const CheckoutForm = () => {
     });
   }, [stripe]);
 
+  console.log(message);
   return (
     <div>
       {succeeded ? (
@@ -114,7 +118,7 @@ const CheckoutForm = () => {
         </article>
       ) : (
         <article>
-          <h4>Hello, {myUser && myUser.name}</h4>
+          <h4>Hello, {user && user.name}</h4>
           <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
           <p>Test Card Number : 4242 4242 4242 4242</p>
         </article>
@@ -147,11 +151,15 @@ const StripeCheckout = () => {
   const createPaymentIntent = async () => {
     const tax = 499;
     try {
-      const { data } = await axios.post("http://localhost:5000/api/v1/orders", {
-        tax,
-        shippingFee: shipping_fee,
-        items: cart,
-      });
+      const { data } = await axios.post(
+        "http://localhost:5000/api/v1/orders",
+        {
+          tax,
+          shippingFee: shipping_fee,
+          items: cart,
+        },
+        { withCredentials: true }
+      );
       setClientSecret(data.clientSecret);
     } catch (error) {
       console.log((error as AxiosError).response);
