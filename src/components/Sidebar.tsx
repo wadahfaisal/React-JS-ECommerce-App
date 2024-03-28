@@ -13,7 +13,12 @@ const Sidebar = () => {
   return (
     <aside className={`${isSidebarOpen ? "sidebar show-sidebar" : "sidebar"}`}>
       <div className="sidebar-header">
-        <img src={logo} className="logo" alt="Comfy Sloth" />
+        {/* <img src={logo} className="logo" alt="Comfy Sloth" /> */}
+        <Link to="/">
+          <h1 style={{ marginBottom: "0", fontWeight: "700", color: "white" }}>
+            fashe
+          </h1>
+        </Link>
         <button type="button" className="close-btn" onClick={closeSidebar}>
           <FaTimes />
         </button>
