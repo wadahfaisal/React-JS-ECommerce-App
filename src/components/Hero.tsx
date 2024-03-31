@@ -1,16 +1,73 @@
 import { Link } from "react-router-dom";
-import heroBcg from "../assets/hero-bcg.jpeg";
-import heroBcg2 from "../assets/hero-bcg-2.jpeg";
+import { useState, useEffect } from "react";
+import heroImages from "../utils/heroImages";
+// import heroBcg3 from "../assets/hero-bcg.jpeg";
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Hero = () => {
+  const [images] = useState(heroImages);
+  const [index, setIndex] = useState(0);
+
+  const nextSlide = () => {
+    setIndex((oldIndex) => {
+      let index = oldIndex + 1;
+      if (index > images.length - 1) {
+        index = 0;
+      }
+      return index;
+    });
+  };
+  const prevSlide = () => {
+    setIndex((oldIndex) => {
+      let index = oldIndex - 1;
+      if (index < 0) {
+        index = images.length - 1;
+      }
+      return index;
+    });
+  };
+
+  useEffect(() => {
+    const slider = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(slider);
+  }, [index]);
+
   return (
     <section className="home-hero">
+      {images.map((image, imageIndex) => {
+        const { id, pic } = image;
+
+        let position = "nextSlide";
+        if (imageIndex === index) {
+          position = "activeSlide";
+        }
+        if (
+          imageIndex === index - 1 ||
+          (index === 0 && imageIndex === images.length - 1)
+        ) {
+          position = "lastSlide";
+        }
+
+        return (
+          <article className={`img-container ${position}`} key={id}>
+            <img src={pic} alt="hero image" className="main-img" />
+          </article>
+        );
+      })}
+      <div className="btn-container">
+        <button className="prev" onClick={prevSlide}>
+          <FiChevronLeft />
+        </button>
+        <button className="next" onClick={nextSlide}>
+          <FiChevronRight />
+        </button>
+      </div>
+
       <article className="content">
-        <h1>
-          design your
-          <br />
-          comfort zone
-        </h1>
+        <h1>Lorem ipsum dolor sit</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a esse
           repudiandae odio, saepe sequi sunt aliquid doloribus? Ullam, optio!
@@ -18,10 +75,6 @@ const Hero = () => {
         <Link to="/products" className="hero-btn">
           shop now
         </Link>
-      </article>
-      <article className="img-container">
-        <img src={heroBcg} alt="nice table" className="main-img" />
-        <img src={heroBcg2} alt="person working" className="accent-img" />
       </article>
     </section>
   );

@@ -1,9 +1,13 @@
 import axios from "axios";
 
-const customFetch = axios.create({
-  baseURL: "http://localhost:5000/api/v1",
+// export const fetchWithCredentials = axios.create({
+//
+//   baseURL: `${process.env.REACT_APP_BASE_URL}/api/v1`,
+// });
+
+// fetchWithCredentials.defaults.withCredentials = true;
+
+export const fetchWithoutCredentials = axios.create({
+  // baseURL: "https://ecommerce-api-9t8b.onrender.com/api/v1",
+  baseURL: `${process.env.REACT_APP_BASE_URL}/api/v1`,
 });
-
-customFetch.defaults.withCredentials = true;
-
-export default customFetch;

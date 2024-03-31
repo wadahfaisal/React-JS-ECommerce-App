@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   PropsWithChildren,
   createContext,
@@ -7,13 +6,13 @@ import {
   useReducer,
 } from "react";
 import reducer from "../reducers/products_reducer";
-import { products_url as url } from "../utils/constants";
 import {
   ProductContextType,
   State,
   ActionTypes,
   Product,
 } from "../types/contexts/products_context_type";
+import { fetchWithoutCredentials } from "../utils/axios";
 
 const initialState: State = {
   isSidebarOpen: false,
@@ -38,10 +37,13 @@ export const ProductsProvider = ({ children }: PropsWithChildren) => {
     dispatch({ type: ActionTypes.CLOSE_SIDEBAR });
   };
 
-  const fetchProducts = async (url: string) => {
+  const fetchProducts = async () => {
     dispatch({ type: ActionTypes.GET_PRODUCTS_BEGIN });
     try {
-      const response = await axios.get(url);
+      // const response = await axios.get(
+      //   "https://ecommerce-api-9t8b.onrender.com/api/v1/products"
+      // );
+      const response = await fetchWithoutCredentials.get("/products");
       const products = response.data.products;
 
       dispatch({ type: ActionTypes.GET_PRODUCTS_SUCCESS, payload: products });
@@ -50,10 +52,10 @@ export const ProductsProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const fetchSingleProduct = async (url: string) => {
+  const fetchSingleProduct = async (id: string) => {
     dispatch({ type: ActionTypes.GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const response = await axios.get(url);
+      const response = await fetchWithoutCredentials.get(`/products/${id}`);
       const { product: singleProduct } = response.data;
       dispatch({
         type: ActionTypes.GET_SINGLE_PRODUCT_SUCCESS,
@@ -65,7 +67,7 @@ export const ProductsProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    fetchProducts(url);
+    fetchProducts();
   }, []);
 
   return (

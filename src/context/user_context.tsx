@@ -1,7 +1,7 @@
 import { getUserFromLS } from "../utils/localStorage";
 import reducer from "../reducers/user_reducer";
-import customFetch from "../utils/axios";
-import { AxiosError } from "axios";
+import { fetchWithoutCredentials } from "../utils/axios";
+import axios, { AxiosError } from "axios";
 import {
   PropsWithChildren,
   createContext,
@@ -37,7 +37,12 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   const loginUser = async (userData: LoginData) => {
     dispatch({ type: ActionTypes.LOGIN_USER_BEGIN });
     try {
-      const { data } = await customFetch.post("/auth/login", userData);
+      // const { data } = await fetchWithCredentials.post("/auth/login", userData);
+      const { data } = await axios.post(
+        "https://ecommerce-api-9t8b.onrender.com/api/v1/auth/login",
+        userData
+        // { withCredentials: true }
+      );
       dispatch({ type: ActionTypes.LOGIN_USER_SUCCESS, payload: data.user });
     } catch (error) {
       console.log(error);
@@ -50,7 +55,10 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   const registerUser = async (userData: RegisterData) => {
     dispatch({ type: ActionTypes.REGISTER_USER_BEGIN });
     try {
-      const { data } = await customFetch.post("/auth/register", userData);
+      const { data } = await fetchWithoutCredentials.post(
+        "/auth/register",
+        userData
+      );
       dispatch({ type: ActionTypes.REGISTER_USER_SUCCESS, payload: data.user });
     } catch (error) {
       console.log(error);
@@ -63,7 +71,7 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
   const logoutUser = async () => {
     dispatch({ type: ActionTypes.LOGOUT_USER_BEGIN });
     try {
-      const { data } = await customFetch.get("/auth/logout");
+      const { data } = await fetchWithoutCredentials.get("/auth/logout");
       dispatch({ type: ActionTypes.LOGOUT_USER_SUCCESS, payload: data.msg });
     } catch (error) {
       console.log(error);

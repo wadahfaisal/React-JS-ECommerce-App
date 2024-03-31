@@ -8,7 +8,7 @@ const Product = ({ images, name, price, id }: Props) => {
   return (
     <article className="product-component">
       <div className="container">
-        <img src={"http://localhost:5000" + images[0]} alt={name} />
+        <img src={images[0]} alt={name} />
         <Link to={`/products/${id}`} className="link">
           <FaSearch />
         </Link>

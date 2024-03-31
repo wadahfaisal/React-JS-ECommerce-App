@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProductImagesProps as Props } from "../types/propsTypes";
 
-const ProductImages = ({ images = [] }: Props) => {
-  const [mainImage, setMainImage] = useState(images[0]);
+const ProductImages = ({ images }: Props) => {
+  const [mainImage, setMainImage] = useState("");
 
-  console.log(images);
+  useEffect(() => {
+    if (images) {
+      setMainImage(images[0]);
+    }
+  }, [images]);
+
   return (
     <section className="product-images">
-      <img src={mainImage} alt="main" className="main" />
+      {mainImage && <img src={mainImage} alt="main" className="main" />}
       <div className="gallery">
-        {images.map((img, index) => {
+        {images?.map((img, index) => {
           return (
             <img
               // src={img}
