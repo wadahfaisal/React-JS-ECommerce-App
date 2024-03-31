@@ -3,12 +3,8 @@ section.home-hero {
   overflow: hidden;
   background: #333;
   min-height: 60vh;
-  // display: grid;
-  // place-items: center;
   .img-container {
-    // display: none;
     height: 390px;
-    // position: relative;
 
     /* Addition */
     position: absolute;
@@ -17,7 +13,7 @@ section.home-hero {
     width: 100%;
     height: 100%;
     opacity: 0;
-    // transition: all 0.3s linear;
+
     transition: all 0.5s linear;
   }
 
@@ -39,9 +35,6 @@ section.home-hero {
     place-items: center;
     text-align: center;
     position: absolute;
-    // bottom: 450px;
-    // left: 100px;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -50,14 +43,12 @@ section.home-hero {
   }
   h1 {
     color: $clr-grey-9;
-    // color: $clr-white;
   }
 
   p {
     line-height: 2;
     max-width: 45em;
     margin-bottom: 2rem;
-    // color: $clr-grey-5;
     color: $clr-white;
     font-size: 1rem;
   }
@@ -66,20 +57,15 @@ section.home-hero {
   }
   .main-img {
     opacity: 0.6;
-
     width: 100%;
-    // height: 550px;
     height: 100%;
-    // border: 1px solid yellow;
     position: relative;
     border-radius: $radius;
     display: block;
     object-fit: cover;
   }
   @media (min-width: 992px) {
-    // height: calc(100vh - 5rem);
     height: calc(100vh - 3rem);
-    // grid-template-columns: 1fr 1fr;
     gap: 8rem;
     h1 {
       margin-bottom: 2rem;
@@ -94,38 +80,7 @@ section.home-hero {
     .img-container {
       display: block;
       height: 100%;
-      // background: #333;
-      // position: relative;
     }
-    // .main-img {
-    //   opacity: 0.7;
-    //   width: 100%;
-    //   // height: 550px;
-    //   height: 100%;
-    //   // border: 1px solid yellow;
-    //   position: relative;
-    //   border-radius: $radius;
-    //   display: block;
-    //   object-fit: cover;
-    // }
-    .accent-img {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 250px;
-      transform: translateX(-50%);
-      border-radius: $radius;
-    }
-    // .img-container::before {
-    //   content: "hello";
-    //   position: absolute;
-    //   width: 10%;
-    //   height: 80%;
-    //   background: $clr-primary-9;
-    //   bottom: 0%;
-    //   left: -8%;
-    //   border-radius: $radius;
-    // }
   }
 
   .prev,
@@ -169,6 +124,5 @@ section.home-hero {
   .btn-container {
     position: relative;
     display: flex;
-    // border: 2px solid red;
   }
 }

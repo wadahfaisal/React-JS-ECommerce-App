@@ -5,7 +5,7 @@ import heroImages from "../utils/heroImages";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Hero = () => {
-  const [images, setImages] = useState(heroImages);
+  const [images] = useState(heroImages);
   const [index, setIndex] = useState(0);
 
   const nextSlide = () => {
@@ -30,7 +30,7 @@ const Hero = () => {
   useEffect(() => {
     const slider = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 5000);
 
     return () => clearInterval(slider);
   }, [index]);
@@ -38,6 +38,8 @@ const Hero = () => {
   return (
     <section className="home-hero">
       {images.map((image, imageIndex) => {
+        const { id, pic } = image;
+
         let position = "nextSlide";
         if (imageIndex === index) {
           position = "activeSlide";
@@ -50,8 +52,8 @@ const Hero = () => {
         }
 
         return (
-          <article className={`img-container ${position}`}>
-            <img src={image} alt="hero image" className="main-img" />
+          <article className={`img-container ${position}`} key={id}>
+            <img src={pic} alt="hero image" className="main-img" />
           </article>
         );
       })}
@@ -65,11 +67,7 @@ const Hero = () => {
       </div>
 
       <article className="content">
-        <h1>
-          design your
-          <br />
-          comfort zone
-        </h1>
+        <h1>Lorem ipsum dolor sit</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a esse
           repudiandae odio, saepe sequi sunt aliquid doloribus? Ullam, optio!

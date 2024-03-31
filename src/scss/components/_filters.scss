@@ -37,8 +37,13 @@ section.filters {
     border-color: transparent;
     padding: 0.25rem;
   }
+  // .colors {
+  //   display: flex;
+  //   align-items: center;
+  // }
   .colors {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
     align-items: center;
   }
   .color-btn {

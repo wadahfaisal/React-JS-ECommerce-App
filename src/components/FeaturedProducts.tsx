@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Error from "./Error";
 import Loading from "./Loading";
 import Product from "./Product";
+import { shuffleArray } from "../utils/helpers";
 
 const FeaturedProducts = () => {
   const {
@@ -19,6 +20,8 @@ const FeaturedProducts = () => {
     return <Error />;
   }
 
+  const shuffledProducts = shuffleArray(featured);
+
   return (
     <section className="featured-products">
       <div className="title">
@@ -26,7 +29,7 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className="featured">
-        {featured.slice(0, 3).map((product) => {
+        {shuffledProducts.slice(0, 3).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
       </div>
