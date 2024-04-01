@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
-type Props = {
-  colors: string[];
-  color: string;
-  updateFilter: React.MouseEventHandler<HTMLButtonElement>;
-};
+import { ColorsFilterProps as Props } from "../types/propsTypes";
 
 const ColorsFilter = ({ colors, color, updateFilter }: Props) => {
   const [showColors, setShowColors] = useState(false);

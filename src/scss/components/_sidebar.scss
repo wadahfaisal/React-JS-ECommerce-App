@@ -13,12 +13,15 @@ aside {
     color: $clr-primary-5;
     transition: $transition;
     cursor: pointer;
-    color: $clr-red-dark;
+    // color: $clr-red-dark;
+    color: $clr-white;
     margin-top: 0.2rem;
+
+    &:hover {
+      color: $clr-red-light;
+    }
   }
-  .close-btn:hover {
-    color: $clr-red-light;
-  }
+
   .logo {
     justify-self: center;
     height: 45px;
@@ -32,16 +35,17 @@ aside {
     font-size: 1rem;
     text-transform: capitalize;
     padding: 1rem 1.5rem;
-    color: $clr-grey-3;
+    // color: $clr-grey-3;
+    color: $clr-white;
     transition: $transition;
     letter-spacing: $spacing;
-  }
 
-  .links a:hover {
-    padding: 1rem 1.5rem;
-    padding-left: 2rem;
-    background: $clr-grey-10;
-    color: $clr-grey-2;
+    &:hover {
+      padding: 1rem 1.5rem;
+      padding-left: 2rem;
+      background: $clr-grey-4;
+      color: $clr-grey-10;
+    }
   }
 
   .cart-btn-wrapper {
@@ -60,7 +64,8 @@ aside {
   left: 0;
   width: 100%;
   height: 100%;
-  background: $clr-white;
+  // background: $clr-white;
+  background: $clr-primary-5;
   transition: $transition;
   transform: translate(-100%);
   z-index: -1;

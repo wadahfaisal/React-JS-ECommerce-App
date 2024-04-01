@@ -16,7 +16,14 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">{total_items}</span>
+          <span
+            className="cart-value"
+            style={
+              total_items > 99 ? { padding: "12px", top: -10, right: -18 } : {}
+            }
+          >
+            {total_items}
+          </span>
         </span>
       </Link>
       {user ? (

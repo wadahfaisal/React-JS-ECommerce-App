@@ -9,6 +9,36 @@ const Nav = () => {
   const { openSidebar } = useProductsContext();
   const { user } = useUserContext();
 
+  // return (
+  //   <nav>
+  //     <div className="nav-center">
+  //       <div className="nav-header">
+  //         <Link to="/">
+  //           <h1 style={{ marginBottom: "0", fontWeight: "700" }}>fashe</h1>
+  //         </Link>
+  //         <button type="button" className="nav-toggle" onClick={openSidebar}>
+  //           <FaBars />
+  //         </button>
+  //       </div>
+  //       <ul className="nav-links">
+  //         {links.map((link) => {
+  //           const { id, text, url } = link;
+  //           return (
+  //             <li key={id}>
+  //               <Link to={url}>{text}</Link>
+  //             </li>
+  //           );
+  //         })}
+  //         {user && (
+  //           <li>
+  //             <Link to="/checkout">checkout</Link>
+  //           </li>
+  //         )}
+  //       </ul>
+  //       <CartButtons />
+  //     </div>
+  //   </nav>
+  // );
   return (
     <nav>
       <div className="nav-center">
@@ -16,9 +46,9 @@ const Nav = () => {
           <Link to="/">
             <h1 style={{ marginBottom: "0", fontWeight: "700" }}>fashe</h1>
           </Link>
-          <button type="button" className="nav-toggle" onClick={openSidebar}>
+          {/* <button type="button" className="nav-toggle" onClick={openSidebar}>
             <FaBars />
-          </button>
+          </button> */}
         </div>
         <ul className="nav-links">
           {links.map((link) => {
@@ -35,7 +65,12 @@ const Nav = () => {
             </li>
           )}
         </ul>
-        <CartButtons />
+        <div className="right-column">
+          <CartButtons />
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
+            <FaBars />
+          </button>
+        </div>
       </div>
     </nav>
   );

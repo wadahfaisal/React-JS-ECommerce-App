@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import heroImages from "../utils/heroImages";
 // import heroBcg3 from "../assets/hero-bcg.jpeg";
-import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+// import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 const Hero = () => {
   const [images] = useState(heroImages);
@@ -17,15 +17,15 @@ const Hero = () => {
       return index;
     });
   };
-  const prevSlide = () => {
-    setIndex((oldIndex) => {
-      let index = oldIndex - 1;
-      if (index < 0) {
-        index = images.length - 1;
-      }
-      return index;
-    });
-  };
+  // const prevSlide = () => {
+  //   setIndex((oldIndex) => {
+  //     let index = oldIndex - 1;
+  //     if (index < 0) {
+  //       index = images.length - 1;
+  //     }
+  //     return index;
+  //   });
+  // };
 
   useEffect(() => {
     const slider = setInterval(() => {
@@ -57,25 +57,19 @@ const Hero = () => {
           </article>
         );
       })}
-      <div className="btn-container">
+      {/* <div className="btn-container">
         <button className="prev" onClick={prevSlide}>
           <FiChevronLeft />
         </button>
         <button className="next" onClick={nextSlide}>
           <FiChevronRight />
         </button>
-      </div>
+      </div> */}
 
       <article className="content">
         <h1>Your Fashion Playground</h1>
-        {/* <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a esse
-          repudiandae odio, saepe sequi sunt aliquid doloribus? Ullam, optio!
-        </p> */}
+
         <p>Elevate your wardrobe, discover trends, redefine fashion.</p>
-        {/* <h4 style={{ textTransform: "none", color: "#fff" }}>
-          Elevate your wardrobe, discover trends, redefine fashion.
-        </h4> */}
         <Link to="/products" className="hero-btn">
           shop now
         </Link>

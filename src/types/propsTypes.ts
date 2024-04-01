@@ -55,3 +55,9 @@ export type FormRowProps = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   labelText?: string;
 };
+
+export type ColorsFilterProps = {
+  colors: string[];
+  color: string;
+  updateFilter: React.MouseEventHandler<HTMLButtonElement>;
+};
