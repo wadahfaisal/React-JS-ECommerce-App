@@ -67,11 +67,15 @@ const Hero = () => {
       </div>
 
       <article className="content">
-        <h1>Lorem ipsum dolor sit</h1>
-        <p>
+        <h1>Your Fashion Playground</h1>
+        {/* <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a esse
           repudiandae odio, saepe sequi sunt aliquid doloribus? Ullam, optio!
-        </p>
+        </p> */}
+        <p>Elevate your wardrobe, discover trends, redefine fashion.</p>
+        {/* <h4 style={{ textTransform: "none", color: "#fff" }}>
+          Elevate your wardrobe, discover trends, redefine fashion.
+        </h4> */}
         <Link to="/products" className="hero-btn">
           shop now
         </Link>

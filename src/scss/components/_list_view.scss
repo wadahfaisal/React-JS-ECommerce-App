@@ -8,14 +8,14 @@ section.list-view {
     width: 300px;
     height: 200px;
     object-fit: cover;
-    border-radius: var(--radius);
+    border-radius: $radius;
     margin-bottom: 1rem;
   }
   h4 {
     margin-bottom: 0.5rem;
   }
   .price {
-    color: var(--clr-primary-6);
+    color: $clr-primary-6;
     margin-bottom: 0.75rem;
   }
   p {

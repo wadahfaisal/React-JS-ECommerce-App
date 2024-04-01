@@ -1,6 +1,6 @@
 import { useFilterContext } from "../context/filter_context";
 import { getUniqueValues, formatPrice } from "../utils/helpers";
-import { FaCheck } from "react-icons/fa";
+import { ColorsFilter } from ".";
 
 const Filters = () => {
   const {
@@ -78,39 +78,11 @@ const Filters = () => {
               })}
             </select>
           </div>
-          <div className="form-control">
-            <h5>colors</h5>
-            <div className="colors">
-              {colors.map((c, index) => {
-                if (c === "all") {
-                  return (
-                    <button
-                      key={index}
-                      name="color"
-                      onClick={updateButtonFilters}
-                      className={color === "all" ? "all-btn active" : "all-btn"}
-                      data-color={c}
-                    >
-                      all
-                    </button>
-                  );
-                }
-
-                return (
-                  <button
-                    key={index}
-                    name="color"
-                    onClick={updateButtonFilters}
-                    style={{ background: c }}
-                    className={color === c ? "color-btn active" : "color-btn"}
-                    data-color={c}
-                  >
-                    {color === c ? <FaCheck /> : null}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <ColorsFilter
+            colors={colors}
+            color={color}
+            updateFilter={updateButtonFilters}
+          />
           <div className="form-control">
             <h5>price</h5>
             <p className="price">{formatPrice(price)}</p>

@@ -9,7 +9,6 @@ const ListView = ({ products }: Props) => {
         const { id, images, name, price, description } = product;
         return (
           <article key={id}>
-            {/* <img src={"http://localhost:5000" + images[0]} alt={name} /> */}
             <img src={images[0]} alt={name} />
             <div>
               <h4>{name}</h4>

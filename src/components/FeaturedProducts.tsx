@@ -29,7 +29,7 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className="featured">
-        {shuffledProducts.slice(0, 3).map((product) => {
+        {shuffledProducts.slice(0, 6).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
       </div>

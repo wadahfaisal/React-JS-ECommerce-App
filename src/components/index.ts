@@ -18,6 +18,7 @@ import CartContent from "./CartContent";
 import PageHero from "./PageHero";
 import StripeCheckout from "./StripeCheckout";
 import FormRow from "./FormRow";
+import ColorsFilter from "./ColorsFilter";
 
 export {
   FeaturedProducts,
@@ -40,4 +41,5 @@ export {
   PageHero,
   StripeCheckout,
   FormRow,
+  ColorsFilter,
 };
