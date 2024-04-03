@@ -45,7 +45,11 @@ const ColorsFilter = ({ colors, color, updateFilter }: Props) => {
             <button
               key={index}
               name="color"
-              onClick={updateFilter}
+              // onClick={updateFilter}
+              onClick={(e) => {
+                updateFilter(e);
+                // window.scrollTo({ top: 0 });
+              }}
               // style={{ background: c, display: display(index) }}
               style={displayColors(index, c)}
               className={color === c ? "color-btn active" : "color-btn"}

@@ -75,6 +75,7 @@ export const FilterProvider = ({ children }: PropsWithChildren) => {
       value = (e.target as HTMLButtonElement).dataset.color as string;
       dispatch({ type: ActionTypes.UPDATE_FILTERS, payload: { name, value } });
     }
+    window.scrollTo({ top: 0 });
   };
   // **********************************************************************
   const updateFilters: React.ChangeEventHandler<
@@ -95,6 +96,7 @@ export const FilterProvider = ({ children }: PropsWithChildren) => {
         type: ActionTypes.UPDATE_FILTERS,
         payload: { name, value: tempValue },
       });
+      window.scrollTo({ top: 0 });
       return;
     }
     if (name === "shipping") {
@@ -104,13 +106,16 @@ export const FilterProvider = ({ children }: PropsWithChildren) => {
         type: ActionTypes.UPDATE_FILTERS,
         payload: { name, value: tempValue },
       });
+      window.scrollTo({ top: 0 });
       return;
     }
     dispatch({ type: ActionTypes.UPDATE_FILTERS, payload: { name, value } });
+    window.scrollTo({ top: 0 });
   };
 
   const clearFilters = () => {
     dispatch({ type: ActionTypes.CLEAR_FILTERS });
+    window.scrollTo({ top: 0 });
   };
   return (
     <FilterContext.Provider

@@ -1,6 +1,7 @@
 // import styled from "styled-components";
 import { PageHero } from "../components";
-import aboutImg from "../assets/hero-bcg.jpeg";
+// import aboutImg from "../assets/hero-bcg.jpeg";
+import aboutImg from "../assets/unsplash/clark-street-mercantile-qnKhZJPKFD8-unsplash.jpg";
 
 const AboutPage = () => {
   return (
