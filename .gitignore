@@ -8,8 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-old node_modules
-src/assets/product-images
+./src/assets/product-images
 src/assets/hero-bcg.jpeg
 src/assets/hero-bcg-2.jpeg
 src/assets/product.jpg
