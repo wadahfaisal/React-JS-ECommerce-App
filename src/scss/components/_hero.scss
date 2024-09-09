@@ -1,5 +1,9 @@
 section.home-hero {
   @extend .section;
+  /* Addition Start */
+  position: relative;
+  /* Addition End */
+
   overflow: hidden;
   background: #333;
   min-height: 60vh;
@@ -17,8 +21,6 @@ section.home-hero {
     transition: all 0.8s linear;
   }
 
-  /* Addition */
-  position: relative;
   .activeSlide {
     opacity: 1;
     transform: translateX(0);
