@@ -5,9 +5,10 @@ import axios from "axios";
 //   baseURL: `${process.env.REACT_APP_BASE_URL}/api/v1`,
 // });
 
-// fetchWithCredentials.defaults.withCredentials = true;
-
-export const fetchWithoutCredentials = axios.create({
+// export const fetchWithoutCredentials = axios.create({
+export const customFetch = axios.create({
   // baseURL: "https://ecommerce-api-9t8b.onrender.com/api/v1",
   baseURL: `${process.env.REACT_APP_BASE_URL}/api/v1`,
 });
+
+customFetch.defaults.withCredentials = true;

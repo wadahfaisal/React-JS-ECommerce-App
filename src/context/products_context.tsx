@@ -12,7 +12,7 @@ import {
   ActionTypes,
   Product,
 } from "../types/contexts/products_context_type";
-import { fetchWithoutCredentials } from "../utils/axios";
+import { customFetch } from "../utils/axios";
 
 const initialState: State = {
   isSidebarOpen: false,
@@ -43,7 +43,7 @@ export const ProductsProvider = ({ children }: PropsWithChildren) => {
       // const response = await axios.get(
       //   "https://ecommerce-api-9t8b.onrender.com/api/v1/products"
       // );
-      const response = await fetchWithoutCredentials.get("/products");
+      const response = await customFetch.get("/products");
       const products = response.data.products;
 
       dispatch({ type: ActionTypes.GET_PRODUCTS_SUCCESS, payload: products });
@@ -55,7 +55,7 @@ export const ProductsProvider = ({ children }: PropsWithChildren) => {
   const fetchSingleProduct = async (id: string) => {
     dispatch({ type: ActionTypes.GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const response = await fetchWithoutCredentials.get(`/products/${id}`);
+      const response = await customFetch.get(`/products/${id}`);
       const { product: singleProduct } = response.data;
       dispatch({
         type: ActionTypes.GET_SINGLE_PRODUCT_SUCCESS,
