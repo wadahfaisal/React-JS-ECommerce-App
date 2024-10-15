@@ -52,7 +52,11 @@ const Hero = () => {
         }
 
         return (
-          <article className={`img-container ${position}`} key={id}>
+          <article
+            className={`img-container ${position}`}
+            key={id}
+            data-testid={`image-container-${id}`}
+          >
             <img src={pic} alt="hero image" className="main-img" />
           </article>
         );
