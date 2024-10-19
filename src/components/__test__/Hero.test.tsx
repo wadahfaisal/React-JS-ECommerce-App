@@ -1,12 +1,19 @@
-import { render } from "vitest-browser-react";
-import { describe, expect, it } from "vitest";
-// import "@testing-library/dom";
+import { render, screen } from "@testing-library/react";
 import Hero from "../Hero";
+import { BrowserRouter } from "react-router-dom";
+
+const MockHero = () => {
+  return (
+    <BrowserRouter>
+      <Hero />
+    </BrowserRouter>
+  );
+};
 
 describe("Hero", () => {
   it("should render image container", () => {
-    const { getByTestId } = render(<Hero />);
-    const articleElement = getByTestId("image-container-1");
+    render(<MockHero />);
+    const articleElement = screen.getByTestId("image-container-1");
     expect(articleElement).toBeInTheDocument();
   });
 });
