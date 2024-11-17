@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import Hero from "../Hero";
 import { BrowserRouter } from "react-router-dom";
+import Hero from "../Hero";
 
 const MockHero = () => {
   return (
